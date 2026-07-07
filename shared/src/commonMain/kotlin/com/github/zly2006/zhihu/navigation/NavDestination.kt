@@ -59,7 +59,7 @@ data object Home : TopLevelDestination {
 /**
  * 主 pager 的历史顶层 tab 目标。
  *
- * [Follow] 会映射到“推荐”和“动态”两个相邻 pager 页；上次选择由 ZhihuMain 记住。
+ * [Follow] 会映射到"推荐"和"动态"两个相邻 pager 页；上次选择由 ZhihuMain 记住。
  */
 @Serializable
 data object Follow : TopLevelDestination {
@@ -104,6 +104,15 @@ data object OnlineHistory : TopLevelDestination {
 data object MyCollections : TopLevelDestination {
     override val name: String
         get() = "MyCollections"
+}
+
+/**
+ * 主 pager 的搜索标签页目标。
+ */
+@Serializable
+data object SearchTab : TopLevelDestination {
+    override val name: String
+        get() = "SearchTab"
 }
 
 /**
@@ -233,11 +242,11 @@ data class Question(
 }
 
 /**
- * 在问题详情页发起“写回答/编辑回答”的编辑器页面。
+ * 在问题详情页发起"写回答/编辑回答"的编辑器页面。
  *
  * 说明：
  * - 目前编辑器只提供纯文本输入（可输入 Markdown），不做语法高亮等复杂编辑能力。
- * - 是否是“新回答”还是“更新已有回答”，由上传逻辑在发布前根据登录账号自动探测。
+ * - 是否是"新回答"还是"更新已有回答"，由上传逻辑在发布前根据登录账号自动探测。
  */
 @Serializable
 data class WriteAnswer(
@@ -251,7 +260,7 @@ data class WriteAnswer(
 }
 
 /**
- * 从首页发起“发想法”的编辑器页面。
+ * 从首页发起"发想法"的编辑器页面。
  *
  * 想法不是问题下的内容，没有问题 ID；标题可选，正文或图片至少存在其一。
  */
